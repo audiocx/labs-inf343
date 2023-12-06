@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "golang.cafe/protobuf/model";
+
+
+service KeyService {
+  // Send the ammount of keys
+  rpc SendKeys (CentralToRegionalAvailableKeysRequest) returns (CentralToRegionalAvailableKeysResponse) {}
+}
+
+// The request message containing the user's name.
+message CentralToRegionalAvailableKeysRequest {
+  int32 ammount = 1;
+}
+
+// The response message containing the greetings
+message CentralToRegionalAvailableKeysResponse {
+  int32 code = 1;
+}

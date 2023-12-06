@@ -1,0 +1,9 @@
+version: "3"
+services:
+  server-asia:
+    build:
+      context: ../
+      dockerfile: ./Asia/Dockerfile
+    tty: true
+    ports:
+      - "50002:50002"

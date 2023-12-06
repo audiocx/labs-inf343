@@ -1,0 +1,9 @@
+version: "3"
+services:
+  monotonicreads:
+    build:
+      context: ../
+      dockerfile: ./Vanguardia/Dockerfile
+    tty: true
+    ports:
+      - "6002:6002"

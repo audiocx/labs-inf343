@@ -1,0 +1,9 @@
+version: "3"
+services:
+  monotonicwrites:
+    build:
+      context: ../../
+      dockerfile: ./Informantes/MonotonicWrites/Dockerfile
+    tty: true
+    ports:
+      - "6000:6000"

@@ -1,0 +1,10 @@
+version: "3"
+services:
+  onu:
+    build:
+      context: ../
+      dockerfile: ./ONU/Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - "50005:50005"

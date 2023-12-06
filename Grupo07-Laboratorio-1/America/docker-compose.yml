@@ -1,0 +1,9 @@
+version: "3"
+services:
+  server-america:
+    build:
+      context: ../
+      dockerfile: ./America/Dockerfile
+    tty: true
+    ports:
+      - "50001:50001"

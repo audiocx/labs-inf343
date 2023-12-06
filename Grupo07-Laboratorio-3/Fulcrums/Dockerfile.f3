@@ -1,0 +1,8 @@
+FROM golang:latest
+
+WORKDIR /app
+
+COPY . .
+RUN go mod download
+
+CMD ["go", "run", "Fulcrums/main.go", "Fulcrum3", ":5002", "dist025:5000", "dist026:5001", "dist027:5002"]

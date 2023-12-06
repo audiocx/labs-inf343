@@ -1,0 +1,9 @@
+version: "3"
+services:
+  dn2:
+    build:
+      context: ../
+      dockerfile: ./DN2/Dockerfile
+    tty: true
+    ports:
+      - "55000:56000"

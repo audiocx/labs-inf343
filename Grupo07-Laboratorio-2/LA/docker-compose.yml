@@ -1,0 +1,9 @@
+version: "3"
+services:
+  la:
+    build:
+      context: ../
+      dockerfile: ./LA/Dockerfile
+    tty: true
+    ports:
+      - "50003:50003"

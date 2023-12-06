@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package messages;
+
+option go_package = "./messages";
+
+message Cmd {
+    string Cmd = 1; // AgregarBase, RenombrarBase, ActualizarValor, BorrarBase
+    string Sector = 2; // Nombre del sector
+    string Base = 3; // Nombre de la base
+    string NuevaBase = 4; // Nuevo nombre de la base (si ejecuta RenombrarBase)
+    int32 Valor = 5; // Cantidad de soldados (si ejecuta AgregarBase o ActualizarValor)
+}
+
+message Address {
+    string FulcrumAddress = 1;
+}
+
+message VectorClock {
+    int32 X = 1; // Asociado al Fulcrum1
+    int32 Y = 2; // Asociado al Fulcrum2
+    int32 Z = 3; // Asociado al Fulcrum3
+}
+
+message Info {
+    string Sector = 1; // Nombre del sector
+    string Base = 2; // Nombre de la base
+}
+
+message ValueInfo {
+    int32 Valor = 1; // Cantidad enviada desde los fulcrum al broker
+    VectorClock VC = 2; // Reloj de vector asociado a la consulta realizada
+}
+
+message Log {
+    int64 TimeStamp = 1;
+    Cmd Cmd = 2;
+}
+
+message AllInfo {
+    repeated Log LogList = 1;
+    int32 LogLen = 2;
+    map<string, VectorClock> SectorVectorClock = 3;
+}
+
+message AskMerge {
+    string FulcrumName = 1;
+}
+
+message Ack {
+    int32 Value = 1;
+}
+
+message CommandsAndVectorClocks {
+    repeated Cmd CmdList= 1;
+    int32 CmdLen = 2;
+    map<string, VectorClock> SectorVectorClock = 3;
+}
+
+service MessageService {
+    rpc AskAddress(Cmd) returns (Address) {} // Informantes -> Broker
+    rpc Command(Cmd) returns (VectorClock) {} // Informantes -> Fulcrums
+    rpc GetSoldados(Info) returns (ValueInfo) {} // Vanguardia -> Broker
+    rpc Soldados(Info) returns (ValueInfo) {} // Broker -> Fulcrums
+    rpc RequestMerge(AskMerge) returns (Ack) {} // Cualquiera -> Fulcrum
+    rpc Merge(AskMerge) returns (AllInfo) {} // Fulcrum -> Fulcrum, pide los logs y relojes de vectores
+    rpc PropagateChanges(CommandsAndVectorClocks) returns (Ack) {} // Fulcrum -> Fulcrum, envia la info a propagar
+}

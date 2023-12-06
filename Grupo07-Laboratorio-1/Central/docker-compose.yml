@@ -1,0 +1,9 @@
+version: "3"
+services:
+  server-central:
+    build:
+      context: ../
+      dockerfile: ./Central/Dockerfile
+    tty: true
+    ports:
+      - "50000:50000"

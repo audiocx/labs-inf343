@@ -1,0 +1,15 @@
+generar proto (desde esta carpeta): protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/messages.proto
+
+user git: audiocx
+pass git: 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
+
+dist025 - America (50000) - Central (50004)
+dist026 - Asia (50001) - RabbitMQ (8080)
+dist027 - Europa (50002)
+dist028 - Oceania (50003)
+
+vm - pass
+dist025 - nJSkd6wnW92e
+dist026 - 8bnrUZxt63Pj
+dist027 - 6SBT3VHFqnUn
+dist028 - U55L2Sp4VgHZ 

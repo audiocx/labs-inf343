@@ -1,0 +1,23 @@
+version: "3"
+services:
+  f1:
+    build:
+      context: ../
+      dockerfile: ./Fulcrums/Dockerfile.f1
+    tty: true
+    ports:
+      - "5000:5000"
+  f2:
+    build:
+      context: ../
+      dockerfile: ./Fulcrums/Dockerfile.f2
+    tty: true
+    ports:
+      - "5001:5001"
+  f3:
+    build:
+      context: ../
+      dockerfile: ./Fulcrums/Dockerfile.f3
+    tty: true
+    ports:
+      - "5002:5002"

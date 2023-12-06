@@ -1,0 +1,23 @@
+generar proto (desde esta carpeta): protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/messages.proto
+
+user git: audiocx
+pass git: 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
+
+dist025 - AS (50000) - OMS (feed: 51000, req: 52000)
+dist026 - AU (50001) - ONU (50005)
+dist027 - EU (50002) - DN1 (feed: 53000, req: 54000)
+dist028 - LA (50003) - DN2 (feed: 55000, req: 56000)
+
+ssh user@capela.inf.santiago.usm.cl
+
+ssh dist@dist025.inf.santiago.usm.cl
+nJSkd6wnW92e
+
+ssh dist@dist026.inf.santiago.usm.cl
+8bnrUZxt63Pj
+
+ssh dist@dist027.inf.santiago.usm.cl
+6SBT3VHFqnUn
+
+ssh dist@dist028.inf.santiago.usm.cl
+U55L2Sp4VgHZ

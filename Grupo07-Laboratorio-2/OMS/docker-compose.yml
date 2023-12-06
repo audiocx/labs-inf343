@@ -1,0 +1,9 @@
+version: "3"
+services:
+  oms:
+    build:
+      context: ../
+      dockerfile: ./OMS/Dockerfile
+    tty: true
+    ports:
+      - "51000:52000"

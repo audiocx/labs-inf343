@@ -1,0 +1,9 @@
+version: "3"
+services:
+  server-oceania:
+    build:
+      context: ../
+      dockerfile: ./Oceania/Dockerfile
+    tty: true
+    ports:
+      - "50004:50004"

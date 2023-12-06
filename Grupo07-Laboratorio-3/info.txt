@@ -1,0 +1,48 @@
+Instalar grpc:
+    -$ go get -u google.golang.org/grpc
+    -$ go get -u google.golang.org/protobuf
+    -$ export GO_PATH=~/go
+    -$ export PATH=$PATH:/$GO_PATH/bin
+
+Generar proto (desde esta carpeta):
+    -$ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/messages.proto
+
+user git: audiocx
+pass git: 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
+
+Ingresar a user con ssh:
+ssh user@capela.inf.santiago.usm.cl
+ssh cinal@capela.inf.santiago.usm.cl
+
+Ingresar a las VM:
+ssh dist@dist025.inf.santiago.usm.cl
+nJSkd6wnW92e
+
+ssh dist@dist026.inf.santiago.usm.cl
+8bnrUZxt63Pj
+
+ssh dist@dist027.inf.santiago.usm.cl
+6SBT3VHFqnUn
+
+ssh dist@dist028.inf.santiago.usm.cl
+U55L2Sp4VgHZ
+
+Ejecutar en local:
+    // servePort, addressFulcrum1, addressFulcrum2, addressFulcrum3
+    - Broker: $ go run main.go :4000 :5000 :5001 :5002
+
+    // serverName, servePort, addressFulcrum1, addressFulcrum2, addressFulcrum3
+    - Fulcrum1: $ go run main.go Fulcrum1 :5000 :5000 :5001 :5002
+    - Fulcrum2: $ go run main.go Fulcrum2 :5001 :5000 :5001 :5002
+    - Fulcrum3: $ go run main.go Fulcrum3 :5002 :5000 :5001 :5002
+
+    // brokerAddress
+    - MonotonicWrites: $ go run main.go :4000
+
+    // Vanguardia
+    - MonotonicReads: $ go run main.go :4000
+
+dist025: Fulcrum1 :5000, Informante 1 :6000 MonotonicWrites
+dist026: Fulcrum2 :5001, Informante 2 :6001 ReadYourWrites
+dist027: Fulcrum3 :5002, Vanguardia :6002 MonotonicReads
+dist028: Broker :4000
